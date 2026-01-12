@@ -3,8 +3,11 @@
 /build/
 /build/classes/java/main/
 /run/
-/.idea
+/.idea/
 /*/run/
+/*/runs/
 /*/build/
 /*/.gradle/
 /*/remappedSrc/
+/.vscode/
+/*/out/
