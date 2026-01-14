@@ -7,7 +7,7 @@ buildscript {
     dependencies {
         //classpath 'gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext:1.1.7' // Required for NeoGradle
         //classpath 'com.google.code.gson:gson:2.10.1' //fix cache issues
-        classpath 'org.ow2.asm:asm:9.6'
+        //classpath 'org.ow2.asm:asm:9.9.1'
     }
 }
 
@@ -50,10 +50,10 @@ test {
 subprojects {
     tasks.withType(JavaCompile).configureEach {
         options.encoding = 'UTF-8'
-        options.compilerArgs.add('--enable-preview')
     }
 }
 
+/*
 import org.objectweb.asm.*
 import java.util.jar.*
 void removePreview(File jarFile) {
@@ -116,3 +116,4 @@ void removePreview(File jarFile) {
         throw new RuntimeException("无法删除原始 Jar 文件！")
     }
 }
+ */

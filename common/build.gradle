@@ -1,24 +1,22 @@
 plugins {
-    id 'fabric-loom' version "${fabric_loom_version}"
+    id 'net.fabricmc.fabric-loom' version "${fabric_loom_version}"
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(java_version)
 test.enabled = false
-
-jar.doLast {
-    rootProject.removePreview archiveFile.get().asFile
-}
 
 dependencies {
 
-    minecraft "com.mojang:minecraft:${minecraft_version}"
+    minecraft "com.mojang:minecraft:${fabric_minecraft_version}"
+    /*
     mappings loom.layered() {
         officialMojangMappings()
         parchment("org.parchmentmc.data:parchment-${parchment_minecraft_version}:${parchment_mappings_version}@zip")
     }
+     */
 
     //Only for mixin bundle
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    api "net.fabricmc:fabric-loader:${fabric_loader_version}"
 }
 
 java {

@@ -7,21 +7,17 @@ test.enabled = false
 
 java {
     withSourcesJar()
-    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    toolchain.languageVersion = JavaLanguageVersion.of(java_version)
 }
 
 dependencies {
     implementation "net.neoforged:neoforge:${neoforge_version}"
 
-    compileOnly project(':common')
+    implementation project(':common')
 }
 
 tasks.withType(JavaCompile).configureEach {
-    source(project(':common').sourceSets.main.allSource) // 将:common的源代码加入编译
-}
-
-jar.doLast {
-    rootProject.removePreview archiveFile.get().asFile
+    //source(project(':common').sourceSets.main.allSource) // 将:common的源代码加入编译
 }
 
 processResources {

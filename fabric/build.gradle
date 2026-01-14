@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version "${fabric_loom_version}"
+    id 'net.fabricmc.fabric-loom' version "${fabric_loom_version}"
 }
 
 base.setArchivesName("${mod_id}-fabric-${mod_version}+${minecraft_version}")
@@ -7,32 +7,26 @@ test.enabled = false
 
 java {
     withSourcesJar()
-    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    toolchain.languageVersion = JavaLanguageVersion.of(java_version)
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${minecraft_version}"
+    minecraft "com.mojang:minecraft:${fabric_minecraft_version}"
+    /*
     mappings loom.layered() {
         officialMojangMappings()
         parchment("org.parchmentmc.data:parchment-${parchment_minecraft_version}:${parchment_mappings_version}@zip")
     }
+     */
 
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+    api "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    api "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
 
-    compileOnly project(':common')
+    implementation project(':common')
 }
 
 tasks.withType(JavaCompile).configureEach {
-    source(project(':common').sourceSets.main.allSource) // 将:common的源代码加入编译
-}
-
-jar.doLast {
-    rootProject.removePreview archiveFile.get().asFile
-}
-
-test {
-    enabled = false
+    //source(project(':common').sourceSets.main.allSource) // 将:common的源代码加入编译
 }
 
 processResources {
