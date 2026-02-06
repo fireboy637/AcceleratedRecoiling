@@ -24,7 +24,7 @@ public class TempID {
         }
         int tempId = currentIndex++;
         frameSnapshot[tempId] = e;
-        ((ICustomBB)e).setNativeId(tempId);
+         ((ICustomBB)e).setNativeId(tempId);
     }
 
     public static Entity getEntity(int id) {
