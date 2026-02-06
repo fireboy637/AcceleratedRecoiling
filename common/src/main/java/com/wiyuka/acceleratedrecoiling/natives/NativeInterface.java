@@ -212,7 +212,7 @@ public class NativeInterface {
 
         linker = java.lang.foreign.Linker.nativeLinker();
 
-        Arena arena = java.lang.foreign.Arena.ofConfined();
+        Arena arena = java.lang.foreign.Arena.ofShared();
         java.lang.foreign.SymbolLookup lib = findFoldLib(arena, dllPath);
 
         pushMethodHandle = linker.downcallHandle(
